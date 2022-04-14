@@ -31,6 +31,8 @@ so that the `ImageFolder` can read all the datasets correctly.
 
 ## Reproducing the figures
 
+For the results on the linear regression models, please refer to [here](linear_regression_MNIST.ipynb)
+
 In the following training commands, please remove the `-G` option if GPU is not available. 
 
 ```shell
