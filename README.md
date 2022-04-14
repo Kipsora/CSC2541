@@ -48,6 +48,7 @@ python3 scripts/train.py -G -D $DATASET_PATH -C configs/resnet18/imagenet+225-bi
 python3 scripts/train.py -G -D $DATASET_PATH -C configs/resnet18/imagenet+225-bird-species/global=0.001/sgd_with_momentum
 python3 scripts/train.py -G -D $DATASET_PATH -C configs/resnet18/imagenet+225-bird-species/global=0.001/adam
 python3 scripts/train.py -G -D $DATASET_PATH -C configs/resnet18/imagenet+225-bird-species/global=0.001/sgd
+python3 scripts/train.py -G -D $DATASET_PATH -C configs/resnet18/imagenet+225-bird-species/global=0.001/sgd/rayleigh.yml
 ```
 
 Then, use the `scripts/plot.py` to get the figures:
