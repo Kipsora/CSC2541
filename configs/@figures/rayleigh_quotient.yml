@@ -1,0 +1,25 @@
+:leaf: true
+
+nrows: 1
+ncols: 1
+figsize: [6, 4]
+
+figures:
+  - type: Curve
+    title: "Rayleigh Quotient"
+    ylabel: "Rayleigh Quotient"
+    xlabel: "Number of Steps"
+    grid: true
+    xscale: "log"
+    legend:
+      loc: 'upper right'
+      fontsize: 10
+    series:
+      - legend: "Global Rayleigh"
+        data:
+          type: ReadTensorBoardJSON
+          path: "assets/run-resnet18_imagenet+225-bird-species_global=0.001_sgd_rayleigh_2022-04-12 19_04_07-tag-trainer_global_rayleigh.json"
+      - legend: "Local Rayleigh"
+        data:
+          type: ReadTensorBoardJSON
+          path: "assets/run-resnet18_imagenet+225-bird-species_global=0.001_sgd_rayleigh_2022-04-12 19_04_07-tag-trainer_local_rayleigh.json"

@@ -1,0 +1,6 @@
+optimizer:
+  type: Adam
+  kwargs:
+    lr: 0.0001
+    momentum: null
+    weight_decay: null

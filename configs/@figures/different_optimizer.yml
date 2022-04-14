@@ -1,0 +1,53 @@
+:leaf: true
+
+nrows: 1
+ncols: 2
+figsize: [7, 3]
+
+figures:
+  - type: Curve
+    title: "Global Validation Loss"
+    ylabel: "Objective"
+    xlabel: "Epochs"
+    grid: true
+    series:
+      - legend: "SGD"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/sgd"
+          field: "inferer/evaluation/global/objective"
+      - legend: "SGD w/ Momentum"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/sgd_with_momentum"
+          field: "inferer/evaluation/global/objective"
+      - legend: "Adam"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/adam"
+          field: "inferer/evaluation/global/objective"
+
+  - type: Curve
+    title: "Global Validation Accuracy"
+    ylabel: "Top-1 Accuracy"
+    xlabel: "Epochs"
+    grid: true
+    legend:
+      loc: 'lower right'
+      fontsize: 10
+    series:
+      - legend: "SGD"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/sgd"
+          field: "inferer/evaluation/global/metric/top_1"
+      - legend: "SGD w/ Momentum"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/sgd_with_momentum"
+          field: "inferer/evaluation/global/metric/top_1"
+      - legend: "Adam"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/adam"
+          field: "inferer/evaluation/global/metric/top_1"

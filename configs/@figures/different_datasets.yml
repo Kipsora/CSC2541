@@ -1,0 +1,63 @@
+:leaf: true
+
+nrows: 1
+ncols: 2
+figsize: [7, 3]
+
+figures:
+  - type: Curve
+    title: "Global Validation Loss"
+    ylabel: "Objective"
+    xlabel: "Epochs"
+    grid: true
+    legend:
+      loc: 'upper right'
+      fontsize: 10
+    series:
+      - legend: "225-Bird-Dataset"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/sgd"
+          field: "inferer/evaluation/global/objective"
+      - legend: "Scenes"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+scenes/global=0.001/sgd"
+          field: "inferer/evaluation/global/objective"
+      - legend: "Flowers"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+flowers-102/global=0.001/sgd"
+          field: "inferer/evaluation/global/objective"
+      - legend: "Cars"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+cars/global=0.001/sgd"
+          field: "inferer/evaluation/global/objective"
+
+  - type: Curve
+    title: "Global Validation Accuracy"
+    ylabel: "Top-1 Accuracy"
+    xlabel: "Epochs"
+    grid: true
+    series:
+      - legend: "225-Bird-Dataset"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/sgd"
+          field: "inferer/evaluation/global/metric/top_1"
+      - legend: "Scenes"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+scenes/global=0.001/sgd"
+          field: "inferer/evaluation/global/metric/top_1"
+      - legend: "Flowers"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+flowers-102/global=0.001/sgd"
+          field: "inferer/evaluation/global/metric/top_1"
+      - legend: "Cars"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+cars/global=0.001/sgd"
+          field: "inferer/evaluation/global/metric/top_1"

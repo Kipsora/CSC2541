@@ -1,0 +1,17 @@
+matplotlib
+torch
+numpy
+torchaudio
+torchvision
+tensorboard
+tqdm
+Pillow
+requests
+scipy
+PyYAML
+setuptools
+termcolor
+scikit-learn
+functorch
+jax
+optax

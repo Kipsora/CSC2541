@@ -1,0 +1,5 @@
+optimizer:
+  kwargs:
+    # lr: 0.002
+    momentum: 0.9
+    weight_decay: null

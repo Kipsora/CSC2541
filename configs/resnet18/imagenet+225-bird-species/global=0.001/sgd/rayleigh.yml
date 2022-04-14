@@ -1,0 +1,22 @@
+data_loaders:
+  rayleigh:
+    kwargs:
+      collate_fn: faster_image_collator
+      batch_size: 64
+
+datasets:
+  rayleigh_global:
+    type: ImageFolders
+    num_batches: 40
+    frequency: 100
+    kwargs:
+      paths:
+        - imagenet/train
+
+  rayleigh_local:
+    type: ImageFolders
+    num_batches: 40
+    frequency: 100
+    kwargs:
+      paths:
+        - 225-bird-species/train

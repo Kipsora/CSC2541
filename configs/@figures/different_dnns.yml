@@ -1,0 +1,53 @@
+:leaf: true
+
+nrows: 1
+ncols: 2
+figsize: [7, 3]
+
+figures:
+  - type: Curve
+    title: "Global Validation Loss"
+    ylabel: "Objective"
+    xlabel: "Epochs"
+    grid: true
+    series:
+      - legend: "MobileNetV2"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/mobilenetv2/imagenet+225-bird-species/global=0.001/sgd"
+          field: "inferer/evaluation/global/objective"
+      - legend: "DenseNet121"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/densenet121/imagenet+225-bird-species/global=0.001/sgd"
+          field: "inferer/evaluation/global/objective"
+      - legend: "ResNet18"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/sgd"
+          field: "inferer/evaluation/global/objective"
+
+  - type: Curve
+    title: "Global Validation Accuracy"
+    ylabel: "Top-1 Accuracy"
+    xlabel: "Epochs"
+    grid: true
+    legend:
+      loc: 'upper right'
+      fontsize: 10
+    series:
+      - legend: "MobileNetV2"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/mobilenetv2/imagenet+225-bird-species/global=0.001/sgd"
+          field: "inferer/evaluation/global/metric/top_1"
+      - legend: "DenseNet121"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/densenet121/imagenet+225-bird-species/global=0.001/sgd"
+          field: "inferer/evaluation/global/metric/top_1"
+      - legend: "ResNet18"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/sgd"
+          field: "inferer/evaluation/global/metric/top_1"

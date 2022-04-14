@@ -1,0 +1,18 @@
+:leaf: true
+
+datasets:
+  training:
+    type: ExtendedImageFolders
+    partitions:
+      - path: imagenet/train
+        ratio: 0.001
+      - path: 225-bird-species/train
+        ratio: 1.000
+
+  validation:
+    type: ExtendedImageFolders
+    partitions:
+      - path: imagenet/val
+        ratio: 0.001
+      - path: 225-bird-species/valid
+        ratio: 1.000

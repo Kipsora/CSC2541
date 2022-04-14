@@ -1,0 +1,53 @@
+:leaf: true
+
+nrows: 1
+ncols: 2
+figsize: [7, 3]
+
+figures:
+  - type: Curve
+    title: "Global Validation Loss"
+    ylabel: "Objective"
+    xlabel: "Epochs"
+    grid: true
+    series:
+      - legend: "$lr = 2\\times 10^{-3}$"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/sgd"
+          field: "inferer/evaluation/global/objective"
+      - legend: "$lr = 6\\times 10^{-4}$"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/sgd/lr=0.0006"
+          field: "inferer/evaluation/global/objective"
+      - legend: "$lr = 2\\times 10^{-4}$"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/sgd/lr=0.0002"
+          field: "inferer/evaluation/global/objective"
+
+  - type: Curve
+    title: "Global Validation Accuracy"
+    ylabel: "Top-1 Accuracy"
+    xlabel: "Epochs"
+    grid: true
+    legend:
+      loc: 'lower right'
+      fontsize: 10
+    series:
+      - legend: "$lr = 2\\times 10^{-3}$"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/sgd"
+          field: "inferer/evaluation/global/metric/top_1"
+      - legend: "$lr = 6\\times 10^{-4}$"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/sgd/lr=0.0006"
+          field: "inferer/evaluation/global/metric/top_1"
+      - legend: "$lr = 2\\times 10^{-4}$"
+        data:
+          type: ReadAllEpochs
+          path: "sessions/configs/resnet18/imagenet+225-bird-species/global=0.001/sgd/lr=0.0002"
+          field: "inferer/evaluation/global/metric/top_1"

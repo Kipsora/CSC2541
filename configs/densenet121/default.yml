@@ -1,0 +1,46 @@
+data_loaders:
+  training:
+    kwargs:
+      collate_fn: faster_image_collator
+      batch_size: 64
+
+  inference:
+    kwargs:
+      collate_fn: faster_image_collator
+      batch_size: 100
+
+datasets:
+  transforms:
+    training:
+      - type: RandomResizedCrop
+        kwargs:
+          size: 224
+      - type: RandomHorizontalFlip
+      - type: ToTensor
+      - type: Normalize
+        kwargs:
+          mean: [ 0.485, 0.456, 0.406 ]
+          std: [ 0.229, 0.224, 0.225 ]
+    inference:
+      - type: Resize
+        kwargs:
+          size: 256
+      - type: CenterCrop
+        kwargs:
+          size: 224
+      - type: ToTensor
+      - type: Normalize
+        kwargs:
+          mean: [ 0.485, 0.456, 0.406 ]
+          std: [ 0.229, 0.224, 0.225 ]
+
+model:
+  arch: densenet121
+  inputs:
+    - shape: ["batch", 3, 224, 224]
+      dtype: float32
+      name: images
+  targets:
+    - shape: ["batch"]
+      dtype: float32
+      name: labels

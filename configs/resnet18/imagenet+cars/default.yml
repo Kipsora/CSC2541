@@ -1,0 +1,58 @@
+:leaf: false
+
+model:
+  kwargs:
+    num_classes: 1000
+  outputs:
+    - logits
+  adapters:
+    - type: LoadWeights
+      skip_resumption: true
+      from_url:
+        url: "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+        cache_path: torchvision
+    - type: WidenLinearLayer
+      kwargs:
+        index: fc
+        new_features: 196
+
+optimizer:
+  type: SGD
+  kwargs:
+    lr: 0.002
+    momentum: 0.9
+    weight_decay: 0.00004
+
+num_epochs: 50
+
+scheduler:
+  type: CosineAnnealing
+  kwargs:
+    T_max: 50
+
+datasets:
+  evaluations:
+    global:
+      type: ImageFolders
+      kwargs:
+        paths:
+          - imagenet/val
+
+    local:
+      type: ImageFolders
+      kwargs:
+        paths:
+          - cars/test
+
+checkpoint:
+  max_checkpoints: 1
+  save_on_better_metric:
+    field: "inferer/validation/metric/top_1"
+
+objective:
+  type: CrossEntropyLoss
+
+metric:
+  type: TopKAccuracy
+  kwargs:
+    ranks: [1, 5]

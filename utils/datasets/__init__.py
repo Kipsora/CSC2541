@@ -1,0 +1,1 @@
+from .extended_image_folder import ExtendedImageFolders
